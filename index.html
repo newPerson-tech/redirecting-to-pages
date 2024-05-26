@@ -3,28 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page 1</title>
-    <link rel="stylesheet" href="./page2.html" />
+    <title>Redirecting to Another Page</title>
     <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <button id="button1" data-url="example.com/page1">Button 1</button>
+    <button id="button2" data-url="example.com/page2">Button 2</button>
+
     <script>
-      function redirectToPage(url) {
-        // Check if the URL has http or https protocol
-        if (!/^https?:\/\//i.test(url)) {
-          // Add protocol based on local context; assume its http://
-          url =
-            window.location.protocol + "//" + window.location.host + "/" + url;
+      // Function to check if URL has HTTP/HTTPS protocol
+      function ensureProtocol(url) {
+        if (!url.startsWith("http://") && !url.startsWith("https://")) {
+          return "http://" + url; // Default to http if no protocol
         }
-        // Redirect to the specified URL
+        return url;
+      }
+
+      // Function to handle button click
+      function handleButtonClick(event) {
+        const button = event.target;
+        let url = button.getAttribute("data-url");
+        url = ensureProtocol(url);
         window.location.href = url;
       }
 
-      function redirectToPage2() {
-        redirectToPage("page2.html");
-      }
+      // Attach event listeners to the buttons
+      document
+        .getElementById("button1")
+        .addEventListener("click", handleButtonClick);
+      document
+        .getElementById("button2")
+        .addEventListener("click", handleButtonClick);
     </script>
-  </head>
-  <body>
-    <h1>PIZZA MENU</h1>
-    <button onclick="redirectToPage2()">Make your Choice</button>
   </body>
 </html>
