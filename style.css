@@ -1,0 +1,16 @@
+body {
+  background-color: rgba(233, 195, 101, 0.2);
+}
+
+h1 {
+  color: rgb(156, 28, 3);
+}
+
+button {
+  margin: 20px;
+  padding: 20px 15px;
+  border-radius: 10px;
+  background-color: blanchedalmond;
+  color: rgb(156, 28, 3);
+  font-size: 14px;
+}

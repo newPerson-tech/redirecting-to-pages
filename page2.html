@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page 2</title>
+    <link rel="stylesheet" href="./index.html" />
+    <link rel="stylesheet" href="./style.css" />
+    <script>
+      function redirectToPage(url) {
+        // Check if the URL has http or https protocol
+        if (!/^https?:\/\//i.test(url)) {
+          // Add protocol based on local context; assume its http://
+          url =
+            window.location.protocol + "//" + window.location.host + "/" + url;
+        }
+        // Redirect to the specified URL
+        window.location.href = url;
+      }
+
+      function redirectToPage1() {
+        redirectToPage("index.html");
+      }
+    </script>
+  </head>
+  <body>
+    <h1>MARGHERITA PIZZA</h1>
+    <button onclick="redirectToPage1()">Go back to Menu</button>
+  </body>
+</html>
